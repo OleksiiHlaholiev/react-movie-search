@@ -9,3 +9,4 @@ export const DESCRIPTION_SYMBOLS_QUANTITY = 200;
 export const IMG_W185_H278_PATH_BASE = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2/';
 export const IMG_W350_H196_PATH_BASE = 'https://image.tmdb.org/t/p/w350_and_h196_bestv2/';
 export const IMG_W300_H450_PATH_BASE = 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/';
+export const IMG_W1400_H450_PATH_BASE = 'https://image.tmdb.org/t/p/w1400_and_h450_face/';
