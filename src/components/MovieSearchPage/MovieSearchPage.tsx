@@ -8,6 +8,7 @@ import {
     PAGINATION_ITEMS_PER_PAGE,
     TIME_PROTECTION_MS
 } from "../../constants/constants";
+import ProgressBar from "../ProgressBar/ProgressBar";
 import {monthDecoder} from "../../helpers/helpers";
 import Pagination from "@mui/material/Pagination";
 import SearchIcon from "../../assets/images/icon-search.png";
@@ -137,7 +138,7 @@ export default function MovieSearchPage() {
             <div className="search-results" id="search-results">
                 <h2 className="results-title">{title}</h2>
 
-                {isDataNotEmpty && (
+                {isDataNotEmpty ? (
                     <>
                         <div className="results-cont">
                             {data?.map((itemData: any, itemIndex: number) => renderSearchResultItem(itemData, itemIndex))}
@@ -145,8 +146,7 @@ export default function MovieSearchPage() {
 
                         {renderPagination()}
                     </>
-
-                )}
+                ) : ''}
             </div>
         );
     };
@@ -169,7 +169,7 @@ export default function MovieSearchPage() {
 
         const totalInfo = `${text_showing} ${startNumber} ${text_to} ${lastNumber} ${text_of} ${total_results} ${text_entries}`;
 
-        return (
+        return total_pages && total_results ? (
             <div className={'pagination-cont'}>
                 <span className={'pagination__total-info'}>{totalInfo}</span>
                 <Pagination count={total_pages}
@@ -177,7 +177,7 @@ export default function MovieSearchPage() {
                             onChange={handlePaginationChange}
                 />
             </div>
-        );
+        ) : '';
     }
 
 
@@ -190,7 +190,7 @@ export default function MovieSearchPage() {
 
                 {renderCustomerSearchFilter()}
 
-                {renderSearchResults(data?.results)}
+                {isProcess ? (<ProgressBar/>) : (renderSearchResults(data?.results))}
             </div>
         </section>
     );
