@@ -5,13 +5,14 @@ import {
     IMG_W185_H278_PATH_BASE,
     IMG_W350_H196_PATH_BASE,
     MOBILE_WIDTH,
+    PAGINATION_ITEMS_PER_PAGE,
     TIME_PROTECTION_MS
 } from "../../constants/constants";
 import {monthDecoder} from "../../helpers/helpers";
+import Pagination from "@mui/material/Pagination";
 import SearchIcon from "../../assets/images/icon-search.png";
 import '../../styles/main.scss';
 import './MovieSearchPage.scss';
-
 export default function MovieSearchPage() {
     const currentPageInitial = 1;
     const initialCustomerSearch = 'Garry';
@@ -132,25 +133,48 @@ export default function MovieSearchPage() {
                 <h2 className="results-title">{title}</h2>
 
                 {isDataNotEmpty && (
-                    <div className="results-cont">
-                        {data?.map((itemData: any, itemIndex: number) => renderSearchResultItem(itemData, itemIndex))}
-                    </div>
-                )}
+                    <>
+                        <div className="results-cont">
+                            {data?.map((itemData: any, itemIndex: number) => renderSearchResultItem(itemData, itemIndex))}
+                        </div>
 
-                {/* TODO: the pagination */}
-                {/*<ul className="pagination justify-content-center">
-                  <li className="page-item spec disabled prev-page" data-page="prev">
-                      <span className="page-link">Previous</span>
-                  </li>
-                  <li className="page-item active template" data-page="1">
-                      <span className="page-link">1</span></li>
-                  <li className="page-item spec disabled next-page">
-                      <span className="page-link" data-page="next">Next</span>
-                  </li>
-              </ul>*/}
+                        {renderPagination()}
+                    </>
+
+                )}
             </div>
         );
     };
+
+    const handlePaginationChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setCurrentPage(value);
+    };
+
+    const renderPagination = () => {
+        //TODO: refactor the code - to implement separate component
+        const { total_pages, total_results} = data;
+
+        const startNumber = PAGINATION_ITEMS_PER_PAGE * (currentPage - 1) + 1;
+        const lastNumber = PAGINATION_ITEMS_PER_PAGE * currentPage;
+
+        const text_showing = 'Showing';
+        const text_to = 'to';
+        const text_of = 'of';
+        const text_entries = 'entries';
+
+        const totalInfo = `${text_showing} ${startNumber} ${text_to} ${lastNumber} ${text_of} ${total_results} ${text_entries}`;
+
+        return (
+            <div className={'pagination-cont'}>
+                <span className={'pagination__total-info'}>{totalInfo}</span>
+                <Pagination className={'pagination'}
+                            count={total_pages}
+                            page={currentPage}
+                            onChange={handlePaginationChange}
+                />
+            </div>
+        );
+    }
 
 
     return (
