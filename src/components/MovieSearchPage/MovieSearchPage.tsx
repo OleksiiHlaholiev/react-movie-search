@@ -162,7 +162,7 @@ export default function MovieSearchPage() {
 
     const renderPagination = () => {
         //TODO: refactor the code - to implement separate component
-        const { total_pages, total_results} = data;
+        const {total_pages, total_results} = data;
 
         const startNumber = PAGINATION_ITEMS_PER_PAGE * (currentPage - 1) + 1;
         const lastNumber = (currentPage === total_pages) ? total_results : PAGINATION_ITEMS_PER_PAGE * currentPage;
@@ -186,8 +186,11 @@ export default function MovieSearchPage() {
     }
 
     const renderContent = () => {
-      return renderAndRequestCondition ? (renderSearchResults(data?.results)) : '';
+        // TODO: check the render logic (to avoid extra NoResult text jumps)
+        return renderAndRequestCondition ? (renderSearchResults(data?.results)) : '';
     };
+
+    console.log('!!!! ', {renderAndRequestCondition, data, customerSearch, isProcess});
 
     return (
         <section className="movie-search-section">
