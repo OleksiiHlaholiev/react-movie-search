@@ -5,15 +5,17 @@ import {
     DESCRIPTION_SYMBOLS_QUANTITY,
     IMG_W1400_H450_PATH_BASE,
     IMG_W185_H278_PATH_BASE,
+    IMG_W300_H450_PATH_BASE,
     IMG_W350_H196_PATH_BASE,
     MOBILE_WIDTH
 } from "../../constants/constants";
 import {Link, useParams} from "react-router-dom";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import '../../styles/main.scss';
 
 export default function MovieSearchPageSingleResult() {
     const params = useParams()
-    const { id: videoId } = params;
+    const {id: videoId} = params;
     const [data, setData] = useState<any>(null);
     const [isProcess, setIsProcess] = useState(true);
 
@@ -54,10 +56,7 @@ export default function MovieSearchPageSingleResult() {
             tempDateStr = release_date;
         }
 
-        const tempDescrStr = overview.length > DESCRIPTION_SYMBOLS_QUANTITY ?
-            overview.slice(0, DESCRIPTION_SYMBOLS_QUANTITY - 3) + '...' : overview;
-
-        const currentImgBase = window.innerWidth > MOBILE_WIDTH ? IMG_W185_H278_PATH_BASE : IMG_W350_H196_PATH_BASE;
+        const currentImgBase = window.innerWidth > MOBILE_WIDTH ? IMG_W300_H450_PATH_BASE : IMG_W350_H196_PATH_BASE;
 
         console.log('renderSearchResultItem: ', {id});
 
@@ -70,12 +69,12 @@ export default function MovieSearchPageSingleResult() {
                     />
                 </div>
                 <div className="info-cont">
-                    <p className="name">{title}</p>
+                    <h3 className="name">{title}</h3>
                     <p className="date">{tempDateStr}</p>
                     <p className="rating">{`Рейтинг: ${vote_average}`}</p>
-                    <p className="description">{tempDescrStr}</p>
+                    <p className="description">{overview}</p>
                     <p className="detail-info">
-                        <Link to={'/search'} className="link">НА ГЛАВНУЮ</Link>
+                        <Link to={'/search'} className="link go-to-main-btn">НА ГЛАВНУЮ</Link>
                     </p>
                 </div>
             </div>
@@ -85,11 +84,10 @@ export default function MovieSearchPageSingleResult() {
     const renderContent = () => {
         const {backdrop_path} = data;
         const backgroundImagePath = `url('${IMG_W1400_H450_PATH_BASE}${backdrop_path}')`;
-        // movieDetailsSection.style.backgroundImage = 'url(\'' + IMG_W1400_H450_PATH_BASE + backdrop_path + '\')';
 
         return (
-            <section className="movie-details-section">
-                <div className="bg-cont" style={{'backgroundImage': backgroundImagePath}}>
+            <section className="movie-details-section loaded" style={{'backgroundImage': backgroundImagePath}}>
+                <div className="bg-cont">
                     <div className="container">
                         <h1 style={{"display": "none"}}>
                             Detailed information
