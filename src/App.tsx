@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
+import MovieSearchPage from "./components/MovieSearchPage/MovieSearchPage";
 
 const App = () => {
   return (
-    <div className="app">
-      <h1 className={'app-header'}>react-movie-search is coming soon ... !</h1>
+    <div className="app scroll">
+      <MovieSearchPage />
     </div>
   );
 }
