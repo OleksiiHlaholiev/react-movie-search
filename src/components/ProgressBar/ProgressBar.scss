@@ -1,5 +1,5 @@
 .progress {
-  height: 40vmin;
+  height: 30vmin;
   pointer-events: none;
   background-color: transparent;
 }
@@ -12,7 +12,7 @@
 
 .progress-cont {
   background-color: transparent;
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
