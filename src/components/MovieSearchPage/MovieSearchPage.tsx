@@ -13,14 +13,16 @@ import Pagination from "@mui/material/Pagination";
 import SearchIcon from "../../assets/images/icon-search.png";
 import '../../styles/main.scss';
 import './MovieSearchPage.scss';
+
+
 export default function MovieSearchPage() {
     const currentPageInitial = 1;
-    const initialCustomerSearch = 'Garry';
+    const initialCustomerSearch = '';
 
     const [data, setData] = useState<any>(null);
     const [isProcess, setIsProcess] = useState(true);
     const [currentPage, setCurrentPage] = useState(currentPageInitial);
-    const [customerSearch, setCustomerSearch] = useState('Garry');
+    const [customerSearch, setCustomerSearch] = useState(initialCustomerSearch);
     const [tmpCustomerSearch, setTmpCustomerSearch] = useState(initialCustomerSearch);
 
 
@@ -167,8 +169,7 @@ export default function MovieSearchPage() {
         return (
             <div className={'pagination-cont'}>
                 <span className={'pagination__total-info'}>{totalInfo}</span>
-                <Pagination className={'pagination'}
-                            count={total_pages}
+                <Pagination count={total_pages}
                             page={currentPage}
                             onChange={handlePaginationChange}
                 />
