@@ -82,11 +82,11 @@ export default function MovieSearchPageResults() {
                            onChange={(e) => setTmpCustomerSearch(e?.target?.value)}
                     />
                     <div className="input-group-append">
-                        <button type="submit" id="search-btn" className="btn btn-outline-secondary">
+                        <span className="btn btn-outline-secondary">
                             <i className="icon icon-search">
                                 <img src={SearchIcon} alt="icon-search"/>
                             </i>
-                        </button>
+                        </span>
                     </div>
                 </div>
             </form>

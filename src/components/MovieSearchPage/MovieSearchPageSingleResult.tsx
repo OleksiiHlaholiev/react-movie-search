@@ -3,6 +3,7 @@ import {getMovieById, getMovies} from "../../services/api";
 import {monthDecoder} from "../../helpers/helpers";
 import {
     DESCRIPTION_SYMBOLS_QUANTITY,
+    IMG_W1400_H450_PATH_BASE,
     IMG_W185_H278_PATH_BASE,
     IMG_W350_H196_PATH_BASE,
     MOBILE_WIDTH
@@ -82,9 +83,13 @@ export default function MovieSearchPageSingleResult() {
     };
 
     const renderContent = () => {
+        const {backdrop_path} = data;
+        const backgroundImagePath = `url('${IMG_W1400_H450_PATH_BASE}${backdrop_path}')`;
+        // movieDetailsSection.style.backgroundImage = 'url(\'' + IMG_W1400_H450_PATH_BASE + backdrop_path + '\')';
+
         return (
             <section className="movie-details-section">
-                <div className="bg-cont">
+                <div className="bg-cont" style={{'backgroundImage': backgroundImagePath}}>
                     <div className="container">
                         <h1 style={{"display": "none"}}>
                             Detailed information
