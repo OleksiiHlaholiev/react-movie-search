@@ -3,6 +3,7 @@ import {
     Route,
     BrowserRouter as Router,
     Routes,
+    Navigate,
 } from "react-router-dom";
 
 export default function MovieSearchPage () {
@@ -11,9 +12,8 @@ export default function MovieSearchPage () {
             <Routes>
                 <Route path="/search" element={<MovieSearchPageResults/>} />
 
-                <Route path="*" element={<MovieSearchPageResults/>} />
+                <Route path="*" element={<Navigate to="/search" replace />} />
             </Routes>
         </Router>
-
     );
 }
