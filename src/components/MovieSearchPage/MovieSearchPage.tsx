@@ -25,6 +25,9 @@ export default function MovieSearchPage() {
     const [customerSearch, setCustomerSearch] = useState(initialCustomerSearch);
     const [tmpCustomerSearch, setTmpCustomerSearch] = useState(initialCustomerSearch);
 
+    const resetCurrentPageToInitial = () => {
+        setCurrentPage(currentPageInitial);
+    };
 
     const loadData = async () => {
         try {
@@ -53,7 +56,7 @@ export default function MovieSearchPage() {
     let debounceHandlerCustomerSearch: number = -1;
     useEffect(() => {
         debounceHandlerCustomerSearch = setTimeout((() => {
-            // resetCurrentPageToInitial();
+            resetCurrentPageToInitial();
             setCustomerSearch(tmpCustomerSearch);
         }) as TimerHandler, TIME_PROTECTION_MS);
         return () => clearTimeout(debounceHandlerCustomerSearch);
