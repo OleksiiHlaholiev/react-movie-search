@@ -157,7 +157,7 @@ export default function MovieSearchPage() {
         const { total_pages, total_results} = data;
 
         const startNumber = PAGINATION_ITEMS_PER_PAGE * (currentPage - 1) + 1;
-        const lastNumber = PAGINATION_ITEMS_PER_PAGE * currentPage;
+        const lastNumber = (currentPage === total_pages) ? total_results : PAGINATION_ITEMS_PER_PAGE * currentPage;
 
         const text_showing = 'Showing';
         const text_to = 'to';
