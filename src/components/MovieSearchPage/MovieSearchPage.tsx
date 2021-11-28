@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
 import { getMovies } from "../../services/api";
-import './MovieSearchPage.scss';
 import {TIME_PROTECTION_MS} from "../../constants/constants";
+import SearchIcon from "../../assets/images/icon-search.png";
+import '../../styles/main.scss';
+import './MovieSearchPage.scss';
 
 export default function MovieSearchPage() {
     const currentPageInitial = 1;
@@ -47,9 +49,44 @@ export default function MovieSearchPage() {
         return () => clearTimeout(debounceHandlerCustomerSearch);
     }, [tmpCustomerSearch]);
 
+    const renderCustomerSearchFilter = () => {
+        return (
+            <form id="search-form" className="form-cont" name="search-form">
+                <div className="input-group mb-3">
+                    <input type="text"
+                           id="search-input"
+                           className="form-control"
+                           placeholder="Введите название фильма"
+                           autoComplete="off"
+                           onChange={(e) => setTmpCustomerSearch(e?.target?.value)}
+                    />
+                    <div className="input-group-append">
+                        <button type="submit" id="search-btn" className="btn btn-outline-secondary">
+                            <i className="icon icon-search">
+                                <img src={SearchIcon} alt="icon-search" />
+                            </i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        );
+    };
+
     return (
+        <section className="movie-search-section">
+            <div className="container">
+                <h1>
+                    React Movie search engine!
+                </h1>
+
+                {renderCustomerSearchFilter()}
+            </div>
+        </section>
+    );
+
+    /*return (
       <div className={'movie-search-page'}>
           <h1 className={'app-header'}>React Movie Search is coming soon ... !</h1>
       </div>
-    );
+    );*/
 };
