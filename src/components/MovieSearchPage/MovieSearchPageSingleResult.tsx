@@ -16,6 +16,7 @@ import '../../styles/main.scss';
 export default function MovieSearchPageSingleResult() {
     const params = useParams()
     const {id: videoId} = params;
+    // TODO: add interface for data!
     const [data, setData] = useState<any>(null);
     const [isProcess, setIsProcess] = useState(true);
 
