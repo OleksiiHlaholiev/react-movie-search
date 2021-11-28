@@ -21,10 +21,12 @@ export default function MovieSearchPage() {
     const initialCustomerSearch = '';
 
     const [data, setData] = useState<any>(null);
-    const [isProcess, setIsProcess] = useState(true);
+    const [isProcess, setIsProcess] = useState(false);
     const [currentPage, setCurrentPage] = useState(currentPageInitial);
     const [customerSearch, setCustomerSearch] = useState(initialCustomerSearch);
     const [tmpCustomerSearch, setTmpCustomerSearch] = useState(initialCustomerSearch);
+
+    const renderAndRequestCondition = !isProcess && customerSearch?.length;
 
     const resetCurrentPageToInitial = () => {
         setCurrentPage(currentPageInitial);
@@ -45,11 +47,13 @@ export default function MovieSearchPage() {
 
     useEffect(() => {
         (async () => {
-            setIsProcess(true);
+            if (renderAndRequestCondition) {
+                setIsProcess(true);
 
-            await loadData();
+                await loadData();
 
-            setIsProcess(false);
+                setIsProcess(false);
+            }
         })();
     }, [customerSearch, currentPage]);
 
@@ -58,6 +62,7 @@ export default function MovieSearchPage() {
     useEffect(() => {
         debounceHandlerCustomerSearch = setTimeout((() => {
             resetCurrentPageToInitial();
+            setData(null);
             setCustomerSearch(tmpCustomerSearch);
         }) as TimerHandler, TIME_PROTECTION_MS);
         return () => clearTimeout(debounceHandlerCustomerSearch);
@@ -180,6 +185,9 @@ export default function MovieSearchPage() {
         ) : '';
     }
 
+    const renderContent = () => {
+      return renderAndRequestCondition ? (renderSearchResults(data?.results)) : '';
+    };
 
     return (
         <section className="movie-search-section">
@@ -190,7 +198,7 @@ export default function MovieSearchPage() {
 
                 {renderCustomerSearchFilter()}
 
-                {isProcess ? (<ProgressBar/>) : (renderSearchResults(data?.results))}
+                {isProcess ? (<ProgressBar/>) : (renderContent())}
             </div>
         </section>
     );
