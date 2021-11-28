@@ -1,11 +1,11 @@
-.progress {
+.progress-react {
   height: 30vmin;
   pointer-events: none;
   background-color: transparent;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .progress {
+  .progress-react {
     animation: progress-spin infinite 10s linear;
   }
 }

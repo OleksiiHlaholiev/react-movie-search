@@ -9,7 +9,7 @@ export interface ProgressBarProps {
 const ProgressBar: FC<ProgressBarProps> = (props) => {
     return (
         <div className={'progress-cont'}>
-            <img src={logo} className="progress" alt="logo" />
+            <img src={logo} className="progress-react" alt="logo" />
         </div>
     )
 }
