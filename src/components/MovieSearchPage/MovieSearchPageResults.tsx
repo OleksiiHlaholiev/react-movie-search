@@ -14,6 +14,7 @@ import Pagination from "@mui/material/Pagination";
 import SearchIcon from "../../assets/images/icon-search.png";
 import '../../styles/main.scss';
 import './MovieSearchPage.scss';
+import {Link} from "react-router-dom";
 
 
 export default function MovieSearchPageResults() {
@@ -109,26 +110,26 @@ export default function MovieSearchPageResults() {
             overview.slice(0, DESCRIPTION_SYMBOLS_QUANTITY - 3) + '...' : overview;
 
         const currentImgBase = window.innerWidth > MOBILE_WIDTH ? IMG_W185_H278_PATH_BASE : IMG_W350_H196_PATH_BASE;
+        const linkPathTo = `${id}`;
+        console.log('renderSearchResultItem: ', {linkPathTo, id});
 
         return (
             <div className="item" key={`item-${id}`}>
                 <div className="img-cont">
-                    <a className="link" href="" target="_blank">
+                    <Link to={linkPathTo} className="link">
                         <img className="poster"
                              src={`${currentImgBase}${poster_path}`}
                              alt="video img"
                         />
-                    </a>
+                    </Link>
                 </div>
                 <div className="info-cont">
-                    <a className="link" href="" target="_blank">
-                        <h3 className="name">{title}</h3>
-                    </a>
+                    <Link to={linkPathTo} className="link name">{title}</Link>
                     <p className="date">{tempDateStr}</p>
                     <p className="rating">{`Рейтинг: ${vote_average}`}</p>
                     <p className="description">{tempDescrStr}</p>
                     <p className="detail-info">
-                        <a className="link" href="" target="_blank">Подробнее</a>
+                        <Link to={linkPathTo} className="link">Подробнее</Link>
                     </p>
                 </div>
             </div>
