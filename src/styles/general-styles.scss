@@ -44,5 +44,16 @@ section {
 
   .MuiPagination-ul {
     justify-content: flex-end;
+
+    .MuiPaginationItem-root.Mui-selected, .MuiPaginationItem-root:hover {
+      background-color: #c3e0ff;
+    }
   }
+
+  button {
+    &:active, &:focus {
+      outline: none;
+    }
+  }
+
 }
