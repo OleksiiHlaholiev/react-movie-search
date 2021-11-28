@@ -5,7 +5,7 @@ import MovieSearchPage from "./components/MovieSearchPage/MovieSearchPage";
 
 const App = () => {
   return (
-    <div className="app">
+    <div className="app scroll">
       <MovieSearchPage />
     </div>
   );
