@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {getMovies} from "../../services/api";
 import {
     DESCRIPTION_SYMBOLS_QUANTITY,
-    IMG_W185_H278_PATH_BASE,
+    IMG_W185_H278_PATH_BASE, IMG_W300_H450_PATH_BASE,
     IMG_W350_H196_PATH_BASE,
     MOBILE_WIDTH,
     PAGINATION_ITEMS_PER_PAGE,
@@ -110,7 +110,9 @@ export default function MovieSearchPageResults() {
         const tempDescrStr = overview.length > DESCRIPTION_SYMBOLS_QUANTITY ?
             overview.slice(0, DESCRIPTION_SYMBOLS_QUANTITY - 3) + '...' : overview;
 
-        const currentImgBase = window.innerWidth > MOBILE_WIDTH ? IMG_W185_H278_PATH_BASE : IMG_W350_H196_PATH_BASE;
+        // TODO: check the path for mobile size - doesn*t exist already ???
+        // const currentImgBase = window.innerWidth > MOBILE_WIDTH ? IMG_W185_H278_PATH_BASE : IMG_W350_H196_PATH_BASE;
+        const currentImgBase = IMG_W185_H278_PATH_BASE;
         const linkPathTo = `${id}`;
         console.log('renderSearchResultItem: ', {linkPathTo, id});
 
