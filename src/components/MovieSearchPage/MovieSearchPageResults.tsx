@@ -21,6 +21,7 @@ export default function MovieSearchPageResults() {
     const currentPageInitial = 1;
     const initialCustomerSearch = '';
 
+    // TODO: add interface for data!
     const [data, setData] = useState<any>(null);
     const [isProcess, setIsProcess] = useState(false);
     const [currentPage, setCurrentPage] = useState(currentPageInitial);

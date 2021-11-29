@@ -12,14 +12,14 @@ export default function MovieSearchPage () {
     return (
         <Router>
             <Routes>
-                <Route path="/search" element={<MovieSearchPageResults/>} />
-                <Route path="/search/:id" element={<MovieSearchPageSingleResult />} />
+                <Route path="/react-movie-search" element={<MovieSearchPageResults/>} />
+                <Route path="/react-movie-search/:id" element={<MovieSearchPageSingleResult />} />
 
                 {/*<Route path="/search" element={<MovieSearchPageResults />}>
                     <Route path=":id" element={<MovieSearchPageSingleResult />} />
                 </Route>*/}
 
-                <Route path="*" element={<Navigate to="/search" replace />} />
+                <Route path="*" element={<Navigate to="/react-movie-search" replace />} />
             </Routes>
         </Router>
     );

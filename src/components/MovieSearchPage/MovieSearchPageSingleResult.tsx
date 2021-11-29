@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {getMovieById, getMovies} from "../../services/api";
+import {getMovieById} from "../../services/api";
 import {monthDecoder} from "../../helpers/helpers";
 import {
     DESCRIPTION_SYMBOLS_QUANTITY,
@@ -16,6 +16,7 @@ import '../../styles/main.scss';
 export default function MovieSearchPageSingleResult() {
     const params = useParams()
     const {id: videoId} = params;
+    // TODO: add interface for data!
     const [data, setData] = useState<any>(null);
     const [isProcess, setIsProcess] = useState(true);
 
@@ -56,7 +57,9 @@ export default function MovieSearchPageSingleResult() {
             tempDateStr = release_date;
         }
 
-        const currentImgBase = window.innerWidth > MOBILE_WIDTH ? IMG_W300_H450_PATH_BASE : IMG_W350_H196_PATH_BASE;
+        // TODO: check the path for mobile size - doesn*t exist already ???
+        // const currentImgBase = window.innerWidth > MOBILE_WIDTH ? IMG_W300_H450_PATH_BASE : IMG_W350_H196_PATH_BASE;
+        const currentImgBase = IMG_W300_H450_PATH_BASE;
 
         console.log('renderSearchResultItem: ', {id});
 
@@ -94,7 +97,6 @@ export default function MovieSearchPageSingleResult() {
                         </h1>
 
                         <div className="search-results">
-                            <h2 className="results-title"></h2>
                             <div className="results-cont">
                                 {renderSearchResultItem(data)}
                             </div>
