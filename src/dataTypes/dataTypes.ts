@@ -45,7 +45,7 @@ export interface IMovieSearchSingleResult {
     popularity: number;
     poster_path: string;
     production_companies: {
-        id: number,
+        id: number;
         logo_path: string;
         name: string;
         origin_country: string;
@@ -61,11 +61,11 @@ export interface IMovieSearchSingleResult {
         english_name: string;
         iso_639_1: string;
         name: string;
-    }[],
+    }[];
     status: string;
     tagline: string;
     title: string;
-    video: boolean,
+    video: boolean;
     vote_average: number;
     vote_count: number;
 }
