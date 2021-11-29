@@ -72,7 +72,11 @@ export default function MovieSearchPageResults() {
 
     const renderCustomerSearchFilter = () => {
         return (
-            <form id="search-form" className="form-cont" name="search-form">
+            <form id="search-form"
+                  className="form-cont"
+                  name="search-form"
+                  onSubmit={(event) => {event?.preventDefault()}}
+            >
                 <div className="input-group mb-3">
                     <input type="text"
                            id="search-input"
